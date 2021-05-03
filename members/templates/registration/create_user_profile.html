@@ -1,0 +1,38 @@
+{% extends 'basic.html' %}
+
+{% block title %}Rajan Blog | Create A New Profile {% endblock %}
+
+
+{% block content %}
+
+<div class="container px-5">
+
+    {% if user.is_authenticated %}
+
+
+    {% if not user.profile.id %}
+
+    <h1 class="text-center text-dark">Create Profile Page</h1>
+
+    <div class="form-group">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary">Create Your Profile</button>
+        </form>
+    </div>
+
+    {% else %}
+    <h1 class="text-center">You have already created your profile. <a href="{% url 'home' %}"><button
+                class="btn btn-secondary">Go Back</button></a></h1>
+    {% endif %}
+
+    {% else %}
+
+    <h1 class="text-center">You're not allowed here! (And you know it...) <a href="{% url 'home' %}"><button
+                class="btn btn-secondary">Go Back</button></a></h1>
+
+    {% endif %}
+</div>
+
+{% endblock %}

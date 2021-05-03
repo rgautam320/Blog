@@ -1,0 +1,26 @@
+{% extends 'basic.html' %}
+
+{% block title %}Rajan Blog | Edit Details {% endblock %}
+
+<style>
+    #hint_id_username,
+    #hint_id_password1 {
+        display: none;
+    }
+</style>
+
+{% block content %}
+
+<div class="container">
+
+    <h1 class="my-3 text-center text-dark">Edit Your Settings</h1>
+
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary">Update</button>
+        </form>
+    </div>
+
+    {% endblock %}

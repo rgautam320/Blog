@@ -1,0 +1,105 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block title %}Rajan Blog | Profile {% endblock %}
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center py-4">Profile Page</h1>
+<div class="page-content page-container" id="page-content">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-6 col-md-12">
+            <div class="card user-card-full">
+                <div class="row m-l-0 m-r-0">
+                    <div class="col-sm-4 bg-c-lite-green user-profile">
+                        <div class="card-block text-center text-white">
+                            <div class="m-b-25">
+                                {% if page_user.profile_picture.url != null %}
+                                <img style="height: 60px; width: 60px; border-radius: 50%; margin-right: 20px;"
+                                    src="{{page_user.profile_picture.url}}" alt="Available">
+                                {% else %}
+                                <img style="height: 60px; width: 60px; border-radius: 50%; margin-right: 20px;"
+                                    src="{% static 'images/default_user_icon.png' %}" alt="Not Available">
+                                {% endif %}
+                            </div>
+                            <h6 class="f-w-600">{{page_user.user.first_name}}
+                                {{page_user.user.last_name}}</h6>
+                            <p>{{page_user.job_title}}</p> <i
+                                class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="card-block">
+                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Email</p>
+                                    <h6 class="text-muted f-w-400">{{page_user.user.email}}</h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Phone</p>
+                                    <h6 class="text-muted f-w-400">{{page_user.phone}}</h6>
+                                </div>
+                            </div>
+                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Bio</h6>
+                            <div class="row">
+                                <div class="col-12 mx-auto">
+                                    <p>{{page_user.bio}}</p>
+                                </div>
+                            </div>
+                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Social Links</h6>
+                            <div class="row">
+                                <div class="col-12 mx-auto">
+                                    <ul class="d-flex p-0">
+                                        {% if page_user.website_URL %}
+                                        <li style="list-style-type: none;" class="me-3">
+                                            <a href="{{ page_user.website_URL }}"><i class="fa fa-globe"
+                                                    aria-hidden="true"></i></a>
+                                        </li>
+                                        {% endif %}
+                                        {% if page_user.facebook_URL %}
+                                        <li style="list-style-type: none;" class="me-3">
+                                            <a href="{{ page_user.facebook_URL }}"><i class="fa fa-facebook"></i></a>
+                                        </li>
+                                        {% endif %}
+                                        {% if page_user.twitter_URL %}
+                                        <li style="list-style-type: none;" class="me-3">
+                                            <a href="{{ page_user.twitter_URL }}"><i class="fa fa-twitter"></i></a>
+                                        </li>
+                                        {% endif %}
+                                        {% if page_user.instagram_URL %}
+                                        <li style="list-style-type: none;" class="me-3">
+                                            <a href="{{ page_user.instagram_URL }}"><i class="fa fa-instagram"></i></a>
+                                        </li>
+                                        {% endif %}
+                                        {% if page_user.youtube_URL %}
+                                        <li style="list-style-type: none;" class="me-3">
+                                            <a href="{{ page_user.youtube_URL }}"><i class="fa fa-youtube"></i></a>
+                                        </li>
+                                        {% endif %}
+                                        {% if page_user.github_URL %}
+                                        <li style="list-style-type: none;" class="me-3">
+                                            <a href="{{ page_user.github_URL }}"><i class="fa fa-github"></i></a>
+                                        </li>
+                                        {% endif %}
+                                        {% if page_user.linkedin_URL %}
+                                        <li style="list-style-type: none;" class="me-3">
+                                            <a href="{{ page_user.linkedin_URL }}"><i class="fa fa-linkedin"></i></a>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

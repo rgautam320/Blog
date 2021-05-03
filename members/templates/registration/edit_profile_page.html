@@ -1,0 +1,28 @@
+{% extends 'basic.html' %}
+
+{% block title %}Rajan Blog | Update Post {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+{% if user.profile.id %}
+
+<h1 class="text-center text-dark">Update Profile</h1>
+<div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <button class="btn btn-primary">Update Profile</button>
+    </form>
+</div>
+{% endif %}
+
+{% else %}
+<h1 class="text-center">You're not allowed here! (And you know it...)<a href="{% url 'home' %}"><button
+            class="btn btn-secondary">Go Back</button></a></h1>
+
+
+{% endif %}
+{% endblock %}

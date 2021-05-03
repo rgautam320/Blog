@@ -1,0 +1,29 @@
+{% extends 'basic.html' %}
+
+{% block title %}Rajan Blog | Login{% endblock %}
+
+{% block content %}
+
+<div class="container px-5">
+
+    <h1 class="text-center py-3 text-danger">Login</h1>
+
+    <div class="form-group px-5">
+        <form method="POST" class="px-5">
+            {% csrf_token %}
+            <!-- {{ form.as_p }} -->
+            <div class="mb-3">
+                <input type="text" class="form-control" name="username" placeholder="Username">
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+
+            <button type="submit" class="btn btn-primary my-2">Login</button>
+            <div class="form-text my-3">Not Registered Yet? <a href="{% url  'register' %}">Register</a> here. </div>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

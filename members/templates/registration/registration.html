@@ -1,0 +1,28 @@
+{% extends 'basic.html' %}
+
+{% block title %}Rajan Blog | Registration {% endblock %}
+
+<style>
+    #hint_id_username,
+    #hint_id_password1 {
+        display: none;
+    }
+</style>
+
+{% block content %}
+
+<div class="container px-5 ">
+
+    <h1 class="my-3 text-center text-danger">Register Yourself</h1>
+
+    <div class="form-group px-5">
+        <form method="POST" class="px-5">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary">Register</button>
+            <div class="form-text my-3">Already Registered? <a href="{% url  'login' %}"
+                    style="text-decoration: none;">Login</a>
+                here.</div>
+        </form>
+    </div>
+    {% endblock %}
