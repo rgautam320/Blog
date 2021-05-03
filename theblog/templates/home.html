@@ -1,0 +1,55 @@
+{% extends 'basic.html' %}
+
+{% block title %}Rajan Blog | Home{% endblock %}
+
+{% block content %}
+<h1 class="text-center py-2">Awesome Blogs</h1>
+<ul class="m-0 p-0">
+    <div class="row">
+        {% for post in object_list %}
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 my-3">
+            <li style="list-style-type: none;">
+
+                <div class="card" style="width: auto; height: 500px; border-radius: 10px;">
+                    <img style="width: 100%; height: 290px; border-radius: 10px;" class="card-img-top"
+                        src="{{post.header_image.url}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title" style="height: 25px; overflow: hidden;">{{post.title}}</h5>
+                        <h6 class="text-capitalize">Category: <a style="text-decoration: none;"
+                                href="{% url 'category' post.category %}">{{post.category}}</a>
+                        </h6>
+                        <strong>
+                            <p class="card-text">{{post.author.first_name}}
+                                {{post.author.last_name}}</p>
+                        </strong>
+                        <strong>
+                            <small>
+                                <small>
+                                    <p class="card-text text-capitalize">{{ post.post_date }}</p>
+                                </small>
+                            </small>
+                        </strong>
+
+                        <p class="card-text text-justify" style="height: 23px; overflow: hidden;">
+                            {{post.short_desc|slice:":30"}}...</p>
+
+                        <div class="d-flex justify-content-around">
+                            <a href="{% url 'article_detail' post.pk %}" class="btn btn-primary">Read </a>
+
+                            {% if user.is_authenticated %}
+                            {% if post.author.id == user.id or user.id == 1 %}
+                            <a href="{% url 'update_post' post.pk %}" class="btn btn-primary">Edit </a>
+
+                            <a href="{% url 'delete_post' post.pk %}" class="btn btn-primary">Delete </a>
+
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </div>
+        {% endfor %}
+    </div>
+</ul>
+{% endblock %}

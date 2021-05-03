@@ -1,0 +1,113 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 col-12">
+        <h1>{{ post.title }}</h1>
+        <h6>
+            <> {{post.short_desc}} <>
+        </h6>
+        <h6 class="text-capitalize">Category: <a style="text-decoration: none;"
+                href="{% url 'category' post.category %}">{{post.category}}</a>
+        </h6>
+        <div class="author_detail d-flex my-3" style="width: auto; height: 75px;">
+            <div class="left-author-detail">
+                {% if post.author.profile.profile_picture.url != null %}
+                <img style="height: 75px; width: 75px; border-radius: 50%; margin-right: 20px;"
+                    src="{{post.author.profile.profile_picture.url}}" alt="Available">
+                {% else %}
+                <img style="height: 75px; width: 75px; border-radius: 50%; margin-right: 20px;"
+                    src="{% static 'images/default_user_icon.png' %}" alt="Not Available">
+                {% endif %}
+            </div>
+            <div class="right-author-detail">
+                <p style="line-height: 75px; vertical-align: middle; font-weight: bolder;"><a
+                        style="text-decoration: none;" href="{% url 'profile_page' post.author.profile.id %}">
+                        {{ post.author.first_name }}
+                        {{ post.author.last_name }}</a>
+                </p>
+            </div>
+        </div>
+
+        <p class="text-capitalize">{{ post.post_date }}</p>
+
+
+        {% if post.author.id == user.id or user.id == 1 %}
+
+        <small><a class="btn btn-primary" href="{% url 'update_post' post.pk %}">Edit</a></small>
+
+        <small><a href="{% url 'delete_post' post.pk %}" class="btn btn-danger">Delete </a></small>
+
+        {% endif %}
+
+    </div>
+
+    <div class="col-md-4 col-12">
+        <div class="photo">
+            <img style="width: 100%; height: auto;" src="{{post.header_image.url}}" alt="Photo Icon">
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="desc">
+    <p>{{ post.body|safe }}</p>
+</div>
+
+<hr />
+
+
+
+
+<div class="row">
+    <div class="col-12">
+        {% if user.is_authenticated %}
+
+        <h5>{{likes}} Likes</h5>
+        <form action="{% url 'like_post' post.pk %}" method="POST">
+            {% csrf_token %}
+            {% if liked %}
+            <button type="submit" name="post_id" value="{{ post.id }}"
+                class="btn btn-danger btn-sm mb-2">Dislike</button>
+            {% else %}
+            <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary btn-sm mb-2">Like</button>
+            {% endif %}
+        </form>
+
+        {% else %}
+
+        <h5><a style="text-decoration: none;" href="{% url 'login' %}">Login</a> to Like - {{likes}} Likes</h5>
+
+        {% endif %}
+    </div>
+</div>
+
+
+<h3>Comments</h3>
+{% if not post.comments.all %}
+
+<h6>Be the first person to comment.</h6>
+<a href="{% url 'add_comment' post.pk %}"><button class="btn btn-primary my-3">Add Comment</button></a>
+
+{% else %}
+<a href="{% url 'add_comment' post.pk %}"><button class="btn btn-primary my-3">Add Comment</button></a>
+
+{% for comment in post.comments.all %}
+
+<div class="card my-1">
+    <div class="card-body">
+        <h5 class="card-title">{{comment.name}}</h5>
+        <p class="card-text">{{comment.body}}</p>
+        <p class="card-text"><small class="text-capitalize">{{comment.date_time}}</small></p>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'basic.html' %}
+
+{% block title %}Rajan Blog | Add Post{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+
+    {% if user.is_authenticated %}
+
+    <h1 class="text-center text-dark">Add Post</h1>
+
+    <div class="form-group">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <button class="btn btn-primary">Post</button>
+        </form>
+    </div>
+
+    {% else %}
+
+    <h1 class="text-center">You're not allowed here! (And you know it...) <a href="{% url 'home' %}"><button
+                class="btn btn-secondary">Go Back</button></a></h1>
+
+    {% endif %}
+</div>
+
+<script>
+    let userid = "{{user.id}}";
+    document.getElementById('author').value = userid;
+</script>
+
+{% endblock %}

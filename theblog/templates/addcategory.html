@@ -1,0 +1,26 @@
+{% extends 'basic.html' %}
+
+{% block title %}Rajan Blog | Add Category{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h1>Add Category</h1>
+
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary">Add Category</button>
+    </form>
+</div>
+
+{% else %}
+
+<h1 class="text-center">You're not allowed here! (And you know it...) <a href="{% url 'home' %}"><button
+            class="btn btn-secondary">Go Back</button></a></h1>
+
+{% endif %}
+
+{% endblock %}
