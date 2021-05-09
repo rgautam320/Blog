@@ -4,6 +4,10 @@ This project was made by Rajan Gautam using Django and Bootstrap.
 
 ## Steps to Run the Application
 
+You can follow this link: https://rgautam320-blog.herokuapp.com
+
+### OR
+
 Pull the repository into your device and run it as you used to run Django Application.
 
 ### Step 1:
