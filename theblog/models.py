@@ -22,8 +22,7 @@ class Post(models.Model):
 
     short_desc = models.CharField(max_length=255)
 
-    header_image = models.ImageField(
-        null=True, blank=True, upload_to="images/")
+    header_image = models.CharField(max_length=255, default="")
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -53,8 +52,7 @@ class Profile(models.Model):
     bio = models.CharField(max_length=255)
     job_title = models.CharField(null=True, blank=True, max_length=255)
     phone = models.CharField(null=True, blank=True, max_length=10)
-    profile_picture = models.ImageField(
-        null=True, blank=True, upload_to='profile')
+    profile_picture = models.CharField(max_length=255, default="")
     website_URL = models.CharField(null=True, blank=True, max_length=255)
     facebook_URL = models.CharField(null=True, blank=True, max_length=255)
     twitter_URL = models.CharField(null=True, blank=True, max_length=255)
@@ -71,8 +69,9 @@ class Profile(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(
-        Post, related_name='comments', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post,
+                             related_name='comments',
+                             on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     body = models.CharField(max_length=255)
     date_time = models.DateTimeField(auto_now_add=True)
