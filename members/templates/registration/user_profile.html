@@ -19,9 +19,9 @@
                     <div class="col-sm-4 bg-c-lite-green user-profile">
                         <div class="card-block text-center text-white">
                             <div class="m-b-25">
-                                {% if page_user.profile_picture.url != null %}
+                                {% if page_user.profile_picture != null %}
                                 <img style="height: 60px; width: 60px; border-radius: 50%; margin-right: 20px;"
-                                    src="{{page_user.profile_picture.url}}" alt="Available">
+                                    src="{{page_user.profile_picture}}" alt="Available">
                                 {% else %}
                                 <img style="height: 60px; width: 60px; border-radius: 50%; margin-right: 20px;"
                                     src="{% static 'images/default_user_icon.png' %}" alt="Not Available">
