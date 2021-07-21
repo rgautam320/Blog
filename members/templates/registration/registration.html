@@ -11,12 +11,12 @@
 
 {% block content %}
 
-<div class="container px-5 ">
+<div class="container px-4">
 
     <h1 class="my-3 text-center text-danger">Register Yourself</h1>
 
-    <div class="form-group px-5">
-        <form method="POST" class="px-5">
+    <div class="form-group">
+        <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <button class="btn btn-primary">Register</button>
