@@ -18,7 +18,7 @@ You can view the blogs available there. For that you don't need to sign in.
 
 ### Step 2:
 
-When you log in, you can add post. 
+When you log in and create your profile, you can add post. 
 
 ![Rajan-Blog-Add-Post-2](https://user-images.githubusercontent.com/71542496/116866740-91854900-ac29-11eb-929c-89641c4e7d8e.png)
 
