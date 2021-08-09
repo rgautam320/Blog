@@ -3,6 +3,38 @@
 {% block title %}Rajan Blog | Home{% endblock %}
 
 {% block content %}
+<div class="container">
+    {% if not user.profile.id %}
+    <h1 class="text-center">
+        <button type="button" class="btn btn-primary w-100 py-2" data-bs-toggle="modal" data-bs-target="#createProfile">
+            Create Profile to Add Blog
+        </button>
+    </h1>
+    {% endif %}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="createProfile" tabindex="-1" aria-labelledby="createProfileTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createProfileTitle">Create Your Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                You first need to create your profile to create your own blog.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">
+                    <a style="color: white !important; text-decoration: none"
+                        href="{% url 'create_profile_page' %}">Create Profile</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <h1 class="text-center py-2">Awesome Blogs</h1>
 <ul class="m-0 p-0">
     <div class="row">
