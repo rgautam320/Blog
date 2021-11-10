@@ -1,5 +1,4 @@
 # Ignoring all __Pycache__ Folders
 __pycache__/
 blog/
-migrations/
 media/
