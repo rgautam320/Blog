@@ -2,6 +2,8 @@
 
 This project was made by Rajan Gautam using Django and Bootstrap.
 
+## -> UPDATE IN README.MD REQUIRED (2021-11-22)
+
 ## Steps to Run the Application
 
 You can follow this link: https://rgautam320-blog.herokuapp.com
