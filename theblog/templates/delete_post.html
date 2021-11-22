@@ -6,7 +6,7 @@
 
 {% if user.is_authenticated %}
 
-{% if user.id == post.author.id %}
+{% if user.id == post.author.id or user.id == 1 %}
 
 <h1 class="heading">Delete Post</h1>
 

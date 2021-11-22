@@ -146,3 +146,16 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar':
+        [['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
+         ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+         ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar'],
+         ['Link', 'Unlink'], ['TextColor', 'BGColor'],
+         ['Styles', 'Format', 'Font', 'FontSize']],
+        'width':
+        'auto',
+    },
+}
