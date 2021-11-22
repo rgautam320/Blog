@@ -8,7 +8,7 @@
 
 {% if user.id == post.author.id %}
 
-<h1>Delete Post</h1>
+<h1 class="heading">Delete Post</h1>
 
 <div class="form-group">
     <form method="POST">
@@ -20,8 +20,7 @@
 
 {% else %}
 
-<h1 class="text-center">You're not allowed here! (And you know it...) <a href="{% url 'home' %}"><button
-            class="btn btn-secondary">Go Back</button></a></h1>
+<h1 class="text-center">You're not allowed here! (And you know it...) <a href="{% url 'home' %}"><button class="btn btn-secondary">Go Back</button></a></h1>
 
 {% endif %}
 

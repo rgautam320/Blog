@@ -13,15 +13,14 @@
 
 <div class="container px-4">
 
-    <h1 class="my-3 text-center text-danger">Register Yourself</h1>
+    <h1 class="heading">Register Yourself</h1>
 
     <div class="form-group">
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <button class="btn btn-primary">Register</button>
-            <div class="form-text my-3">Already Registered? <a href="{% url  'login' %}"
-                    style="text-decoration: none;">Login</a>
+            <div class="form-text my-3">Already Registered? <a href="{% url  'login' %}" style="text-decoration: none;">Login</a>
                 here.</div>
         </form>
     </div>

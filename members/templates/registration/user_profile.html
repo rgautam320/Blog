@@ -10,27 +10,24 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="text-center py-4">Profile Page</h1>
+<h1 class="heading">Profile Page</h1>
 <div class="page-content page-container" id="page-content">
     <div class="row d-flex justify-content-center">
         <div class="col-xl-6 col-md-12">
-            <div class="card user-card-full">
+            <div class="profile-card user-card-full">
                 <div class="row m-l-0 m-r-0">
                     <div class="col-sm-4 bg-c-lite-green user-profile">
                         <div class="card-block text-center text-white">
                             <div class="m-b-25">
                                 {% if page_user.profile_picture != null %}
-                                <img style="height: 60px; width: 60px; border-radius: 50%; margin-right: 20px;"
-                                    src="{{page_user.profile_picture}}" alt="Available">
+                                <img class="profile-img" src="{{page_user.profile_picture.url}}" alt="Available">
                                 {% else %}
-                                <img style="height: 60px; width: 60px; border-radius: 50%; margin-right: 20px;"
-                                    src="{% static 'images/default_user_icon.png' %}" alt="Not Available">
+                                <img class="profile-img" src="{% static 'images/default_user_icon.png' %}" alt="Not Available">
                                 {% endif %}
                             </div>
                             <h6 class="f-w-600">{{page_user.user.first_name}}
                                 {{page_user.user.last_name}}</h6>
-                            <p>{{page_user.job_title}}</p> <i
-                                class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                            <p>{{page_user.job_title}}</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                         </div>
                     </div>
                     <div class="col-sm-8">
@@ -58,8 +55,7 @@
                                     <ul class="d-flex p-0">
                                         {% if page_user.website_URL %}
                                         <li style="list-style-type: none;" class="me-3">
-                                            <a href="{{ page_user.website_URL }}"><i class="fa fa-globe"
-                                                    aria-hidden="true"></i></a>
+                                            <a href="{{ page_user.website_URL }}"><i class="fa fa-globe" aria-hidden="true"></i></a>
                                         </li>
                                         {% endif %}
                                         {% if page_user.facebook_URL %}

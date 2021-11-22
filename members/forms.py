@@ -79,7 +79,7 @@ class ProfilePageCreateForm(forms.ModelForm):
 
             'phone': forms.TextInput(attrs={'class': 'form-control'}),
 
-            'profile_picture': forms.TextInput(attrs={'class': 'form-control'}),
+            # 'profile_picture': forms.TextInput(attrs={'class': 'form-control'}),
 
             'website_URL': forms.TextInput(attrs={'class': 'form-control'}),
 

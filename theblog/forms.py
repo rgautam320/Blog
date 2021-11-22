@@ -27,7 +27,7 @@ class PostForm(forms.ModelForm):
 
             'short_desc': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Title Tag'}),
 
-            'header_image': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Image Link'}),
+            # 'header_image': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Image Link'}),
 
             'author': forms.TextInput(attrs={'class': 'form-control', 'id': 'author', 'value': '', 'type': 'hidden'}),
 

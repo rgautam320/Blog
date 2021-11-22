@@ -27,28 +27,24 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">
-                    <a style="color: white !important; text-decoration: none"
-                        href="{% url 'create_profile_page' %}">Create Profile</a>
+                    <a style="color: white !important; text-decoration: none" href="{% url 'create_profile_page' %}">Create Profile</a>
                 </button>
             </div>
         </div>
     </div>
 </div>
 
-<h1 class="text-center py-2">Awesome Blogs</h1>
+<h1 class="heading">Awesome Blogs</h1>
 <ul class="m-0 p-0">
     <div class="row">
         {% for post in object_list %}
         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 my-3">
-            <li style="list-style-type: none;">
-
-                <div class="card" style="width: auto; height: 500px; border-radius: 10px;">
-                    <img style="width: 100%; height: 290px; border-radius: 10px;" class="card-img-top"
-                        src="{{post.header_image}}" alt="Card image cap">
+            <li>
+                <div class="card">
+                    <img class="card-img-top" src="{{post.header_image.url}}" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title" style="height: 25px; overflow: hidden;">{{post.title}}</h5>
-                        <h6 class="text-capitalize">Category: <a style="text-decoration: none;"
-                                href="{% url 'category' post.category %}">{{post.category}}</a>
+                        <h5 class="card-title">{{post.title}}</h5>
+                        <h6>Category: <a href="{% url 'category' post.category %}">{{post.category}}</a>
                         </h6>
                         <strong>
                             <p class="card-text">{{post.author.first_name}}
@@ -62,7 +58,7 @@
                             </small>
                         </strong>
 
-                        <p class="card-text text-justify" style="height: 23px; overflow: hidden;">
+                        <p class="card-text text-justify">
                             {{post.short_desc|slice:":30"}}...</p>
 
                         <div class="d-flex justify-content-around">
