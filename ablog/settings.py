@@ -19,7 +19,7 @@ SECRET_KEY = config['configuration']['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['web-tech-lab-43.herokuapp.com']
+ALLOWED_HOSTS = ['rgautam320-blog.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
